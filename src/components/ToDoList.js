@@ -1,12 +1,13 @@
 import React from "react";
 import { ToDo } from "./ToDo";
 
-export const ToDoList = ({ todos, editToDo, removeToDo }) =>
+export const ToDoList = ({ todos, removeToDo, ToDoName }) =>
   todos.map((todo) => (
     <ToDo
       key={todo.id}
       todo={todo}
       removeToDo={removeToDo}
-      editToDo={editToDo}
+      // editToDo={editToDo} add "editToDo" to props
+      ToDoName={ToDoName}
     />
   ));

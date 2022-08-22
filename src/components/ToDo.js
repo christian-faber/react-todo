@@ -1,20 +1,23 @@
 import React from "react";
+import ToDoName from "./ToDoName";
 
-export function ToDo({ todo, editToDo, removeToDo }) {
+export function ToDo({ todo, removeToDo, todoName, updateName }) {
   // function handleToDoClick() {
   //change todo to a new object (destructured to do), call handle edit, pass new todo set to 'completed: true'
   // {...todo, complete: !todo.complete}
   // }
+  //handleDelete()
 
   return (
-    <div>
+    <div key="id">
+      <ToDoName name={todoName} setName={updateName} />
       <label>
         <input type="checkbox" checked={todo.complete} />
-        {todo.name}
-        <button onClick={editToDo} className="edit">
+        <div onClick={ToDoName}>{todo.name}</div>
+        {/* <button onClick={editToDo} className="edit">
           ✎
-        </button>
-        <button className="delete" onClick={removeToDo}>
+        </button> */}
+        <button className="delete" onClick={() => removeToDo(todo.id)}>
           x
         </button>
       </label>
