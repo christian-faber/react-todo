@@ -1,13 +1,13 @@
 import "./App.css";
 import { ToDoList } from "./components"; //
 import { useState, useRef } from "react";
+import ToDoName from "./components/ToDoName";
 // import {v4 as uuidv4}
 
 function App() {
   // useState
   const [todos, setToDos] = useState([]);
   const inputRef = useRef();
-  console.log(todos);
 
   // add new //
   const addToDo = (evt) => {
@@ -22,10 +22,10 @@ function App() {
   };
 
   // remove //
-  const removeToDo = (evt) => {
+  const removeToDo = (id) => {
     setToDos((todos) =>
       todos.filter((todo) => {
-        return todo.id !== evt.target.value;
+        return todo.id !== id;
       })
     );
   };
@@ -44,12 +44,11 @@ function App() {
   return (
     <div className="App">
       <form onSubmit={addToDo}>
-        <label>New Task</label>
         <input type="text" ref={inputRef} />
         <button type="submit">+</button>
       </form>
 
-      <ToDoList todos={todos} removeToDo={removeToDo} />
+      <ToDoList todos={todos} updateName={ToDoName} removeToDo={removeToDo} />
     </div>
   );
 }
