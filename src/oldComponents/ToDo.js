@@ -12,21 +12,21 @@ export function ToDo({ todo, removeToDo, updateName, handleToggle }) {
     <div key="id">
       <input
         type="checkbox"
-        checked={todo.completed}
+        checked={todo.complete}
         onChange={() => handleToggle(todo.id)}
       />
       {edit ? (
         <input
           autoFocus
           type="text"
-          value={todo.title}
+          value={todo.name}
           onChange={(evt) => updateName(todo.id, evt.target.value)}
           className="todo-name"
           onBlur={() => setEdit(false)}
           onKeyDown={handleEnter}
         />
       ) : (
-        <span onClick={() => setEdit(true)}>{todo.title}</span>
+        <span onClick={() => setEdit(true)}>{todo.name}</span>
       )}
       {/* <label>
         <ToDoName name={todo.name} setEdit={updateName} />
